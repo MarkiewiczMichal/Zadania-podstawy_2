@@ -85,13 +85,14 @@ public class Zadania {
     //Sample Output
     //Yes
     public void Zadanie4(){
-        String A= "madam";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj słowo a program sprawdzi czy jest to palindrom");
+        String A= scanner.next();
         int counter=0;
 
         for (int i = 0; i < A.length(); i++) {
             if( A.charAt(i)==A.charAt(A.length()-i-1))
             {
-                System.out.println(i);
                 counter++;
             }
 
@@ -101,4 +102,14 @@ public class Zadania {
             System.out.println("yes");
         }
     }
+
+    //Napisać program obliczający należny podatek dochodowy od osób fizycznych. Program ma pobierać od użytkownika dochód i po obliczeniu wypisywać na ekranie
+    //należny podatek. Podatek obliczany jest wg. następujących reguł:
+    //• do 85.528 podatek wynosi 18% podstawy minus 556,02 PLN,
+    //• od 85.528 podatek wynosi 14.839,02 zł + 32% nadwyżki ponad 85.528,00
+    public void Zadanie5(){
+    double dochodRoczny;
+   // new Scaner
+    }
+
 }

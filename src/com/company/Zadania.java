@@ -21,22 +21,34 @@ public class Zadania {
     //Wczytać od użytkownika 3 liczby całkowite i wypisać na ekran największą oraz
     //najmniejszą z nich.
     public void Zadanie2(){
-        int x,y,z;
-        int min =Integer.MAX_VALUE;
-        System.out.println("To jest program do sortowania liczb całkowitych");
-        System.out.println("Podaj liczbę całkowita nr 1:");
-        x=scanner.nextInt();
-        System.out.println("Podaj liczbę całkowita nr 2:");
-        y=scanner.nextInt();
-        System.out.println("Podaj liczbę całkowita nr 3:");
-        z=scanner.nextInt();
+        int[] tab = new int[3];
+        int zmiana=1;
+        int temp;
 
-        if (x<min)
+        for (int j=0;j<tab.length;++j)
         {
-           min=x;
+            System.out.println("Podaj liczbę całkowita nr "+ (j+1) + ":");
+            tab[j]=scanner.nextInt();
         }
 
+        while (zmiana >0){
+            zmiana=0;
+            for (int i=0;i<tab.length-1;++i)
+            {
+             if(tab[i+1]>tab[i])
+             {
+                 temp=tab[i];
+                 tab[i]=tab[i+1];
+                 tab[i+1]=temp;
+                 zmiana++;
+             }
+            }
+           }
+        for (int k=0;k<tab.length;++k)
+        {
+            System.out.print(tab[k]+" ");
 
+        }
     }
 
 }

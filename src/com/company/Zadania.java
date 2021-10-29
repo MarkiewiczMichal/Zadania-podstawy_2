@@ -78,4 +78,27 @@ public class Zadania {
         //inny sposób zaokrąglania liczby
         System.out.format("%.2f%n",BMI);
     }
+
+    //Given a string , print Yes if it is a palindrome, print No otherwise.
+    //Sample Input
+    //madam
+    //Sample Output
+    //Yes
+    public void Zadanie4(){
+        String A= "madam";
+        int counter=0;
+
+        for (int i = 0; i < A.length(); i++) {
+            if( A.charAt(i)==A.charAt(A.length()-i-1))
+            {
+                System.out.println(i);
+                counter++;
+            }
+
+        }
+        if (counter==A.length())
+        {
+            System.out.println("yes");
+        }
+    }
 }

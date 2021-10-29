@@ -51,4 +51,31 @@ public class Zadania {
         }
     }
 
+    //Napisać program, który oblicza wartość współczynnika BMI (ang. body mass
+    //index) wg. wzoru: waga /wzrost^2 .
+    //Jeżeli wynik jest w przedziale (18,5 - 24,9) to wypisuje
+    //”waga prawidłowa”, jeżeli poniżej to ”niedowaga”, jeżeli powyżej ”nadwaga”.
+    public void Zadanie3(){
+        double waga,wzrost,BMI;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj swoją wage w kg");
+        waga=scanner.nextDouble();
+        System.out.println("Podaj swój wzrost w cm");
+        wzrost=scanner.nextDouble();
+        BMI = (waga / Math.pow(wzrost/100,2));
+
+        if(BMI>=18.5 && BMI<=24.9)
+        {
+            System.out.println("Twoja waga jest prawidłowa");
+        }else if(BMI<18.5)
+        {
+            System.out.println("Niedowaga !");
+        }else
+        {
+            System.out.println("Nadwaga !");
+        }
+        System.out.println("Twój współczynnik BMI wynosi " + Math.round(BMI*100.0)/100.0);
+        //inny sposób zaokrąglania liczby
+        System.out.format("%.2f%n",BMI);
+    }
 }

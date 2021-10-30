@@ -112,4 +112,58 @@ public class Zadania {
    // new Scaner
     }
 
+    //W sklepie ze sprzętem AGD oferowana jest sprzedaż ratalna. Napisz program
+    //umożliwiający wyliczenie wysokości miesięcznej raty za zakupiony sprzęt. Danymi
+    //wejściowymi dla programu są:
+    //• cena towaru (od 100 zł do 10 tyś. zł),
+    //• liczba rat (od 6 do 48).
+    //Kredyt jest oprocentowany w zależności od liczby rat:
+    //• od 6–12 wynosi 2.5% ,
+    //• od 13–24 wynosi 5%,
+    //• od 25–48 wynosi 10%.
+    //Obliczona miesięczna rata powinna zawierać również odsetki. Program powinien
+    //sprawdzać, czy podane dane mieszczą się w określonych powyżej zakresach, a w
+    //przypadku błędu pytać prosić użytkownika ponownie o podanie danych.
+    public void Zadanie6(){
+        double cenaTowar,rata=0;
+        int liczbaRat;
+        System.out.println("Program sluzy do obliczenia raty miesiecznej kredytu");
+        System.out.println("W naszym bnku oferujemy kredyty od 100zł do 10tyś zł");
+        System.out.println("Podaj prosze ile chcesz kredytu");
+        Scanner scanner = new Scanner(System.in);
+        cenaTowar=scanner.nextDouble();
+
+        while ((cenaTowar>10000 || cenaTowar<100)){
+            System.out.println("Twoja kwota jest z poza zakresu");
+            System.out.println("W naszym bnku oferujemy kredyty od 100zł do 10tyś zł");
+            cenaTowar=scanner.nextDouble();
+        }
+        System.out.println("Kredyt jest oprocentowany w zależności od liczby rat:");
+        System.out.println("od 6–12 wynosi 2.5% ");
+        System.out.println("od 13–24 wynosi 5%");
+        System.out.println("od 25–48 wynosi 10%");
+        System.out.println("Podaj prosze na ile rat chcesz podzielić spłatę: ");
+        liczbaRat=scanner.nextInt();
+
+        while (liczbaRat<6 || liczbaRat>48)
+        {
+            System.out.println("Proszę wybrać liczbę rat od 6 do 48");
+            liczbaRat=scanner.nextInt();
+        }
+
+        System.out.println("Twoja miesięczna rata kredytu wraz z odsetkami wynosi:");
+        if (liczbaRat<=12)
+        {
+            rata=cenaTowar*1.025/liczbaRat;
+        }else if(liczbaRat<=24)
+        {
+            rata=cenaTowar*1.05/liczbaRat;
+        }else
+        {
+            rata=cenaTowar*1.10/liczbaRat;
+        }
+        System.out.format("%.2f",rata);
+        System.out.println(" zł");
+    }
+
 }

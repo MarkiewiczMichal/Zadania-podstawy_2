@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         Zadania zadania = new Zadania();
-        zadania.Zadanie5();
+        zadania.Zadanie6();
+
     }
 }

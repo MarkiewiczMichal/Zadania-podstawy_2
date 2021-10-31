@@ -100,16 +100,33 @@ public class Zadania {
         if (counter==A.length())
         {
             System.out.println("yes");
+        }else {
+            System.out.println("no");
         }
     }
 
-    //Napisać program obliczający należny podatek dochodowy od osób fizycznych. Program ma pobierać od użytkownika dochód i po obliczeniu wypisywać na ekranie
+    //Napisać program obliczający należny podatek dochodowy od osób fizycznych.
+    // Program ma pobierać od użytkownika dochód i po obliczeniu wypisywać na ekranie
     //należny podatek. Podatek obliczany jest wg. następujących reguł:
     //• do 85.528 podatek wynosi 18% podstawy minus 556,02 PLN,
     //• od 85.528 podatek wynosi 14.839,02 zł + 32% nadwyżki ponad 85.528,00
     public void Zadanie5(){
-    double dochodRoczny;
-   // new Scaner
+    double dochodRoczny,podatek;
+        Scanner scaner = new Scanner(System.in);
+        System.out.println("Program służy do wyliczenia podatku od dochodu rocznego");
+        System.out.println("Podaj swój dochód za ubiegły rok w zł aby wyliczyć podatek");
+        dochodRoczny= scaner.nextDouble();
+
+        if (dochodRoczny <=85528)
+        {
+            podatek= dochodRoczny*0.18-556.02;
+        }else
+        {
+            podatek= 14839.02 + dochodRoczny*0.32;
+        }
+        System.out.print("Podatek od kwoty: "+dochodRoczny+" wynosi: ");
+        System.out.format("%.2f",podatek);
+        System.out.println(" zł");
     }
 
     //W sklepie ze sprzętem AGD oferowana jest sprzedaż ratalna. Napisz program

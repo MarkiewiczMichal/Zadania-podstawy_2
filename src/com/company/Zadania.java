@@ -184,6 +184,7 @@ public class Zadania {
         System.out.println(" zł");
     }
 
+
     //Napisać program realizujący funkcje prostego kalkulatora, pozwalającego na wykonywanie operacji
     // dodawania, odejmowania, mnożenia i dzielenia na dwóch liczbach rzeczywistych.
     // Program ma identyfikować sytuację wprowadzenia błędnego
@@ -236,10 +237,30 @@ public class Zadania {
 //        }
     }
 
+
     //Napisać program, który pobiera od użytkownika liczbę całkowitą dodatnią,
     // a następnie wyświetla na ekranie kolejno wszystkie liczby niepatrzyste nie większe od
     //podanej liczby. Przykład, dla 15 program powinien wyświetlić 1, 3, 5, 7, 9, 11, 13,15.
     public void zadanie8(){
+
+        int liczba;
+        System.out.println("Program wypisuje wszystkie nieparzyste liczby mniejsze od podanej");
+        System.out.println("Podaj prosze liczbę całkowitą większą od 0");
+        Scanner scanner = new Scanner(System.in);
+        liczba = scanner.nextInt();
+        if (liczba <= 0) {
+            System.out.println("Podaj prosze liczbę całkowitą większą od 0");
+        }else
+        {
+            for (int i = 0; i <= liczba; i++) {
+                if (i%2==0)
+                {
+                    continue;
+                }
+                System.out.print(i+" ");
+            }
+        }
+
 
     }
 }

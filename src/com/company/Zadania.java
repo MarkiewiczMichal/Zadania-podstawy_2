@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Zadania {
@@ -9,7 +10,7 @@ public class Zadania {
     // Napisać program służący do konwersji wartości temperatury podanej w stopniach
     //Celsjusza na stopnie w skali Fahrenheita (stopnie Fahrenheita = 1.8 * stopnie
     //Celsjusza + 32.0)
-    public void Zadanie1(){
+    public void zadanie1(){
         double degreesC;
         System.out.println("To jest aplikacja do przeliczania temp. Celcjusza na stopnie w skali Fahrenheita");
         System.out.println("Podaj wartośc temperatury w stopniach Celcjusza:");
@@ -20,7 +21,7 @@ public class Zadania {
     }
     //Wczytać od użytkownika 3 liczby całkowite i wypisać na ekran największą oraz
     //najmniejszą z nich.
-    public void Zadanie2(){
+    public void zadanie2(){
         int[] tab = new int[3];
         int zmiana=1;
         int temp;
@@ -55,7 +56,7 @@ public class Zadania {
     //index) wg. wzoru: waga /wzrost^2 .
     //Jeżeli wynik jest w przedziale (18,5 - 24,9) to wypisuje
     //”waga prawidłowa”, jeżeli poniżej to ”niedowaga”, jeżeli powyżej ”nadwaga”.
-    public void Zadanie3(){
+    public void zadanie3(){
         double waga,wzrost,BMI;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj swoją wage w kg");
@@ -84,7 +85,7 @@ public class Zadania {
     //madam
     //Sample Output
     //Yes
-    public void Zadanie4(){
+    public void zadanie4(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj słowo a program sprawdzi czy jest to palindrom");
         String A= scanner.next();
@@ -110,7 +111,7 @@ public class Zadania {
     //należny podatek. Podatek obliczany jest wg. następujących reguł:
     //• do 85.528 podatek wynosi 18% podstawy minus 556,02 PLN,
     //• od 85.528 podatek wynosi 14.839,02 zł + 32% nadwyżki ponad 85.528,00
-    public void Zadanie5(){
+    public void zadanie5(){
     double dochodRoczny,podatek;
         Scanner scaner = new Scanner(System.in);
         System.out.println("Program służy do wyliczenia podatku od dochodu rocznego");
@@ -141,8 +142,8 @@ public class Zadania {
     //Obliczona miesięczna rata powinna zawierać również odsetki. Program powinien
     //sprawdzać, czy podane dane mieszczą się w określonych powyżej zakresach, a w
     //przypadku błędu pytać prosić użytkownika ponownie o podanie danych.
-    public void Zadanie6(){
-        double cenaTowar,rata=0;
+    public void zadanie6(){
+        double cenaTowar,rata;
         int liczbaRat;
         System.out.println("Program sluzy do obliczenia raty miesiecznej kredytu");
         System.out.println("W naszym bnku oferujemy kredyty od 100zł do 10tyś zł");
@@ -183,10 +184,65 @@ public class Zadania {
         System.out.println(" zł");
     }
 
+
+    //Napisać program realizujący funkcje prostego kalkulatora, pozwalającego na wykonywanie operacji
+    // dodawania, odejmowania, mnożenia i dzielenia na dwóch liczbach rzeczywistych.
+    // Program ma identyfikować sytuację wprowadzenia błędnego
+    //symbolu działania oraz próbę dzielenia przez zero. Zastosować instrukcję switch
+    //do wykonania odpowiedniego działania w zależności od wprowadzonego symbolu
+    //operacji. Scenariusz działania programu:
+    //a) Program wyświetla informację o swoim przeznaczeniu.
+    //b) Wczytuje pierwszą liczbę.
+    //c) Wczytuje symbol operacji arytmetycznej: +, -, *, /.
+    //d) Wczytuje drugą liczbę.
+    //e) Wyświetla wynik lub - w razie konieczności - informację o niemożności wykonania działania.
+    //f) Program kończy swoje działanie po naciśnięciu przez użytkownika klawisza Enter.
+    public void zadanie7() throws  Exception{
+        int a,b;
+        char z;
+        System.out.println("Ten program to prosty kalkulator na liczbach rzeczywistych");
+        System.out.println("+ dodawanie");
+        System.out.println("- odejmowanie");
+        System.out.println("* mnożenie");
+        System.out.println("/ dzielenie");
+
+        Scanner scanner = new Scanner(System.in);
+        int inChar;
+        System.out.println("Enter a Character:");
+        do {
+            System.out.println("Podaj liczbę nr 1");
+            a=scanner.nextInt();
+
+            System.out.println("Podaj symbol operacji");
+            z = scanner.next().charAt(0);
+
+            System.out.println("Podaj liczbę nr 2");
+            b=scanner.nextInt();
+
+            System.out.println(a*b);
+            System.out.println("Zakonczyć program ? type NO or press Enter to exit");
+            inChar = System.in.read();
+            }while(inChar !=10);
+
+//        try {
+//            do {
+//                inChar = System.in.read();
+//                System.out.print("You entered ");
+//                System.out.println(inChar);
+//            }while(inChar ==10);
+//
+//        }
+//        catch (IOException e){
+//            System.out.println("Error reading from user");
+//        }
+    }
+
+
     //Napisać program, który pobiera od użytkownika liczbę całkowitą dodatnią,
     // a następnie wyświetla na ekranie kolejno wszystkie liczby niepatrzyste nie większe od
     //podanej liczby. Przykład, dla 15 program powinien wyświetlić 1, 3, 5, 7, 9, 11, 13,15.
     public void zadanie8(){
+
         int liczba;
         System.out.println("Program wypisuje wszystkie nieparzyste liczby mniejsze od podanej");
         System.out.println("Podaj prosze liczbę całkowitą większą od 0");
@@ -204,6 +260,7 @@ public class Zadania {
                 System.out.print(i+" ");
             }
         }
+
 
     }
 }

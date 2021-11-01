@@ -2,9 +2,9 @@ package com.company;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception  {
         Zadania zadania = new Zadania();
-        zadania.Zadanie6();
+        zadania.zadanie8();
 
     }
 }

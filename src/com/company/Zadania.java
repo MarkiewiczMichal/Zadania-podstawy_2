@@ -260,7 +260,93 @@ public class Zadania {
                 System.out.print(i+" ");
             }
         }
+    }
+    //Napisać program pobierający od użytkownika dwie liczby całkowite A oraz B,
+    //A < B, a następnie wyznaczający sumę ciągu liczb od A do B, czyli sumę ciągu
+    //(A, A + 1, . . . , B). Obliczenia należy wykonać trzykrotnie stosując kolejno pętle:
+    //while, do-while, for.
+    //Przykład:
+    //Dla A = 4 i B = 11 program powinien wyświetlić:
+    //60
+    //60
+    //60
+    public void zadanie9() {
+        int x, y;
+        int sumaFor = 0;
+        int sumaDowhile = 0;
+        int sumaWhile = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Program liczy sumę liczb z przedziału podanego przez użytkownika");
+        System.out.println("Podaj pierwszą liczbę");
+        x = scanner.nextInt();
+        System.out.println("Podaj drugą liczbę która jest większa od pierwszej");
+        y = scanner.nextInt();
 
+        for (int i = 0; i + x <= y; i++) {
+            sumaFor = sumaFor + x + i;
+        }
+        System.out.println(sumaFor);
+
+        int j = 0;
+        do {
+            sumaDowhile = sumaDowhile + x + j;
+            j++;
+        } while (j + x <= y);
+        System.out.println(sumaDowhile);
+
+        int k = 0;
+        while (x + k <= y) {
+            sumaWhile = sumaWhile + x + k;
+            ++k;
+        }
+        System.out.println(sumaWhile);
 
     }
+
+    //Napisać program, który wczytuje od użytkownika liczbę całkowitą dodatnią n, a
+    //następnie wyświetla na ekranie wszystkie potęgi liczby 2 nie większe, niż podana
+    //liczba. Przykładowo, dla liczby 71 program powinien wyświetlić:
+    //1
+    //2
+    //4
+    //8
+    //16
+    //32
+    //64
+    public void zadanie10() {
+        int x, i = 0;
+        double y = 1;
+        System.out.println("Program wyświetla potęgi liczby 2 mniejsze od podanej przez użytkownika liczby");
+        System.out.println("Podaj liczbę całkowitą dodatnią");
+        Scanner scanner = new Scanner(System.in);
+        x = scanner.nextInt();
+
+        while (y <= x) {
+            y = Math.pow(2, i);
+            if (y < x) {
+                System.out.println(y);
+            }
+            ++i;
+        }
+    }
+
+    //Napisać program, który wczytuje liczby podawane przez użytkownika dotąd,
+    // dopóki nie podana zostanie liczba 0.
+    // Następnie wyświetlić sumę wszystkich podanych liczb.
+    public void zadanie11(){
+        System.out.println("Program sumuje liczby podane przez użytkownika");
+        System.out.println("Praca programu kończy się jeżeli podana zostanie liczba \"0\"");
+        int x;
+        int suma=0;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.println("Podaj liczbę");
+            x=scanner.nextInt();
+            suma=suma+x;
+        }while (x!=0);
+        System.out.println("Suma podanych liczb wynosi: "+suma);
+    }
+
 }
+

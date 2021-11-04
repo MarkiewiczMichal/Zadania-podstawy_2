@@ -10,44 +10,41 @@ public class Zadania {
     // Napisać program służący do konwersji wartości temperatury podanej w stopniach
     //Celsjusza na stopnie w skali Fahrenheita (stopnie Fahrenheita = 1.8 * stopnie
     //Celsjusza + 32.0)
-    public void zadanie1(){
+    public void zadanie1() {
         double degreesC;
         System.out.println("To jest aplikacja do przeliczania temp. Celcjusza na stopnie w skali Fahrenheita");
         System.out.println("Podaj wartośc temperatury w stopniach Celcjusza:");
         degreesC = scanner.nextInt();
-        double degreesF = degreesC*1.8+32;
+        double degreesF = degreesC * 1.8 + 32;
 
         System.out.println(degreesC + " stC równe jest " + degreesF + " stopni Fahrenheita");
     }
+
     //Wczytać od użytkownika 3 liczby całkowite i wypisać na ekran największą oraz
     //najmniejszą z nich.
-    public void zadanie2(){
+    public void zadanie2() {
         int[] tab = new int[3];
-        int zmiana=1;
+        int zmiana = 1;
         int temp;
 
-        for (int j=0;j<tab.length;++j)
-        {
-            System.out.println("Podaj liczbę całkowita nr "+ (j+1) + ":");
-            tab[j]=scanner.nextInt();
+        for (int j = 0; j < tab.length; ++j) {
+            System.out.println("Podaj liczbę całkowita nr " + (j + 1) + ":");
+            tab[j] = scanner.nextInt();
         }
 
-        while (zmiana >0){
-            zmiana=0;
-            for (int i=0;i<tab.length-1;++i)
-            {
-             if(tab[i+1]>tab[i])
-             {
-                 temp=tab[i];
-                 tab[i]=tab[i+1];
-                 tab[i+1]=temp;
-                 zmiana++;
-             }
+        while (zmiana > 0) {
+            zmiana = 0;
+            for (int i = 0; i < tab.length - 1; ++i) {
+                if (tab[i + 1] > tab[i]) {
+                    temp = tab[i];
+                    tab[i] = tab[i + 1];
+                    tab[i + 1] = temp;
+                    zmiana++;
+                }
             }
-           }
-        for (int k=0;k<tab.length;++k)
-        {
-            System.out.print(tab[k]+" ");
+        }
+        for (int k = 0; k < tab.length; ++k) {
+            System.out.print(tab[k] + " ");
 
         }
     }
@@ -56,28 +53,25 @@ public class Zadania {
     //index) wg. wzoru: waga /wzrost^2 .
     //Jeżeli wynik jest w przedziale (18,5 - 24,9) to wypisuje
     //”waga prawidłowa”, jeżeli poniżej to ”niedowaga”, jeżeli powyżej ”nadwaga”.
-    public void zadanie3(){
-        double waga,wzrost,BMI;
+    public void zadanie3() {
+        double waga, wzrost, BMI;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj swoją wage w kg");
-        waga=scanner.nextDouble();
+        waga = scanner.nextDouble();
         System.out.println("Podaj swój wzrost w cm");
-        wzrost=scanner.nextDouble();
-        BMI = (waga / Math.pow(wzrost/100,2));
+        wzrost = scanner.nextDouble();
+        BMI = (waga / Math.pow(wzrost / 100, 2));
 
-        if(BMI>=18.5 && BMI<=24.9)
-        {
+        if (BMI >= 18.5 && BMI <= 24.9) {
             System.out.println("Twoja waga jest prawidłowa");
-        }else if(BMI<18.5)
-        {
+        } else if (BMI < 18.5) {
             System.out.println("Niedowaga !");
-        }else
-        {
+        } else {
             System.out.println("Nadwaga !");
         }
-        System.out.println("Twój współczynnik BMI wynosi " + Math.round(BMI*100.0)/100.0);
+        System.out.println("Twój współczynnik BMI wynosi " + Math.round(BMI * 100.0) / 100.0);
         //inny sposób zaokrąglania liczby
-        System.out.format("%.2f%n",BMI);
+        System.out.format("%.2f%n", BMI);
     }
 
     //Given a string , print Yes if it is a palindrome, print No otherwise.
@@ -85,23 +79,21 @@ public class Zadania {
     //madam
     //Sample Output
     //Yes
-    public void zadanie4(){
+    public void zadanie4() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj słowo a program sprawdzi czy jest to palindrom");
-        String A= scanner.next();
-        int counter=0;
+        String A = scanner.next();
+        int counter = 0;
 
         for (int i = 0; i < A.length(); i++) {
-            if( A.charAt(i)==A.charAt(A.length()-i-1))
-            {
+            if (A.charAt(i) == A.charAt(A.length() - i - 1)) {
                 counter++;
             }
 
         }
-        if (counter==A.length())
-        {
+        if (counter == A.length()) {
             System.out.println("yes");
-        }else {
+        } else {
             System.out.println("no");
         }
     }
@@ -111,22 +103,20 @@ public class Zadania {
     //należny podatek. Podatek obliczany jest wg. następujących reguł:
     //• do 85.528 podatek wynosi 18% podstawy minus 556,02 PLN,
     //• od 85.528 podatek wynosi 14.839,02 zł + 32% nadwyżki ponad 85.528,00
-    public void zadanie5(){
-    double dochodRoczny,podatek;
+    public void zadanie5() {
+        double dochodRoczny, podatek;
         Scanner scaner = new Scanner(System.in);
         System.out.println("Program służy do wyliczenia podatku od dochodu rocznego");
         System.out.println("Podaj swój dochód za ubiegły rok w zł aby wyliczyć podatek");
-        dochodRoczny= scaner.nextDouble();
+        dochodRoczny = scaner.nextDouble();
 
-        if (dochodRoczny <=85528)
-        {
-            podatek= dochodRoczny*0.18-556.02;
-        }else
-        {
-            podatek= 14839.02 + dochodRoczny*0.32;
+        if (dochodRoczny <= 85528) {
+            podatek = dochodRoczny * 0.18 - 556.02;
+        } else {
+            podatek = 14839.02 + dochodRoczny * 0.32;
         }
-        System.out.print("Podatek od kwoty: "+dochodRoczny+" wynosi: ");
-        System.out.format("%.2f",podatek);
+        System.out.print("Podatek od kwoty: " + dochodRoczny + " wynosi: ");
+        System.out.format("%.2f", podatek);
         System.out.println(" zł");
     }
 
@@ -142,45 +132,41 @@ public class Zadania {
     //Obliczona miesięczna rata powinna zawierać również odsetki. Program powinien
     //sprawdzać, czy podane dane mieszczą się w określonych powyżej zakresach, a w
     //przypadku błędu pytać prosić użytkownika ponownie o podanie danych.
-    public void zadanie6(){
-        double cenaTowar,rata;
+    public void zadanie6() {
+        double cenaTowar, rata;
         int liczbaRat;
         System.out.println("Program sluzy do obliczenia raty miesiecznej kredytu");
         System.out.println("W naszym bnku oferujemy kredyty od 100zł do 10tyś zł");
         System.out.println("Podaj prosze ile chcesz kredytu");
         Scanner scanner = new Scanner(System.in);
-        cenaTowar=scanner.nextDouble();
+        cenaTowar = scanner.nextDouble();
 
-        while ((cenaTowar>10000 || cenaTowar<100)){
+        while ((cenaTowar > 10000 || cenaTowar < 100)) {
             System.out.println("Twoja kwota jest z poza zakresu");
             System.out.println("W naszym bnku oferujemy kredyty od 100zł do 10tyś zł");
-            cenaTowar=scanner.nextDouble();
+            cenaTowar = scanner.nextDouble();
         }
         System.out.println("Kredyt jest oprocentowany w zależności od liczby rat:");
         System.out.println("od 6–12 wynosi 2.5% ");
         System.out.println("od 13–24 wynosi 5%");
         System.out.println("od 25–48 wynosi 10%");
         System.out.println("Podaj prosze na ile rat chcesz podzielić spłatę: ");
-        liczbaRat=scanner.nextInt();
+        liczbaRat = scanner.nextInt();
 
-        while (liczbaRat<6 || liczbaRat>48)
-        {
+        while (liczbaRat < 6 || liczbaRat > 48) {
             System.out.println("Proszę wybrać liczbę rat od 6 do 48");
-            liczbaRat=scanner.nextInt();
+            liczbaRat = scanner.nextInt();
         }
 
         System.out.println("Twoja miesięczna rata kredytu wraz z odsetkami wynosi:");
-        if (liczbaRat<=12)
-        {
-            rata=cenaTowar*1.025/liczbaRat;
-        }else if(liczbaRat<=24)
-        {
-            rata=cenaTowar*1.05/liczbaRat;
-        }else
-        {
-            rata=cenaTowar*1.10/liczbaRat;
+        if (liczbaRat <= 12) {
+            rata = cenaTowar * 1.025 / liczbaRat;
+        } else if (liczbaRat <= 24) {
+            rata = cenaTowar * 1.05 / liczbaRat;
+        } else {
+            rata = cenaTowar * 1.10 / liczbaRat;
         }
-        System.out.format("%.2f",rata);
+        System.out.format("%.2f", rata);
         System.out.println(" zł");
     }
 
@@ -197,8 +183,8 @@ public class Zadania {
     //d) Wczytuje drugą liczbę.
     //e) Wyświetla wynik lub - w razie konieczności - informację o niemożności wykonania działania.
     //f) Program kończy swoje działanie po naciśnięciu przez użytkownika klawisza Enter.
-    public void zadanie7() throws  Exception{
-        int a,b;
+    public void zadanie7() throws Exception {
+        int a, b;
         char z;
         System.out.println("Ten program to prosty kalkulator na liczbach rzeczywistych");
         System.out.println("+ dodawanie");
@@ -211,18 +197,18 @@ public class Zadania {
         System.out.println("Enter a Character:");
         do {
             System.out.println("Podaj liczbę nr 1");
-            a=scanner.nextInt();
+            a = scanner.nextInt();
 
             System.out.println("Podaj symbol operacji");
             z = scanner.next().charAt(0);
 
             System.out.println("Podaj liczbę nr 2");
-            b=scanner.nextInt();
+            b = scanner.nextInt();
 
-            System.out.println(a*b);
+            System.out.println(a * b);
             System.out.println("Zakonczyć program ? type NO or press Enter to exit");
             inChar = System.in.read();
-            }while(inChar !=10);
+        } while (inChar != 10);
 
 //        try {
 //            do {
@@ -241,7 +227,7 @@ public class Zadania {
     //Napisać program, który pobiera od użytkownika liczbę całkowitą dodatnią,
     // a następnie wyświetla na ekranie kolejno wszystkie liczby niepatrzyste nie większe od
     //podanej liczby. Przykład, dla 15 program powinien wyświetlić 1, 3, 5, 7, 9, 11, 13,15.
-    public void zadanie8(){
+    public void zadanie8() {
 
         int liczba;
         System.out.println("Program wypisuje wszystkie nieparzyste liczby mniejsze od podanej");
@@ -250,17 +236,16 @@ public class Zadania {
         liczba = scanner.nextInt();
         if (liczba <= 0) {
             System.out.println("Podaj prosze liczbę całkowitą większą od 0");
-        }else
-        {
+        } else {
             for (int i = 0; i <= liczba; i++) {
-                if (i%2==0)
-                {
+                if (i % 2 == 0) {
                     continue;
                 }
-                System.out.print(i+" ");
+                System.out.print(i + " ");
             }
         }
     }
+
     //Napisać program pobierający od użytkownika dwie liczby całkowite A oraz B,
     //A < B, a następnie wyznaczający sumę ciągu liczb od A do B, czyli sumę ciągu
     //(A, A + 1, . . . , B). Obliczenia należy wykonać trzykrotnie stosując kolejno pętle:
@@ -333,19 +318,72 @@ public class Zadania {
     //Napisać program, który wczytuje liczby podawane przez użytkownika dotąd,
     // dopóki nie podana zostanie liczba 0.
     // Następnie wyświetlić sumę wszystkich podanych liczb.
-    public void zadanie11(){
+    public void zadanie11() {
         System.out.println("Program sumuje liczby podane przez użytkownika");
         System.out.println("Praca programu kończy się jeżeli podana zostanie liczba \"0\"");
         int x;
-        int suma=0;
+        int suma = 0;
         Scanner scanner = new Scanner(System.in);
 
         do {
             System.out.println("Podaj liczbę");
-            x=scanner.nextInt();
-            suma=suma+x;
-        }while (x!=0);
-        System.out.println("Suma podanych liczb wynosi: "+suma);
+            x = scanner.nextInt();
+            suma = suma + x;
+        } while (x != 0);
+        System.out.println("Suma podanych liczb wynosi: " + suma);
+    }
+
+    //Napisać program, który pobiera od użytkownika ciąg liczb całkowitych. Pobieranie
+    //danych kończone jest podaniem wartości 0 (nie wliczana do danych).
+    // W następnej kolejności program powinien wyświetlić sumę największej oraz najmniejszej z
+    //podanych liczb oraz ich średnią arytmetyczną.
+    //Przykład:
+    //Użytkownik podał ciąg: 1, -4, 2, 17, 0.
+    //Wynik programu:
+    //13 // suma min. i maks.
+    //6.5 // średnia
+    public void zadanie12() {
+        double max = Integer.MIN_VALUE;
+        double min = Integer.MAX_VALUE;
+        System.out.println("Program wylicza sumę z największej i najmniejszej z podanych liczb oraz oblicza ich średnią arytmetyczną");
+        System.out.println("Praca programu kończy się jeżeli podana zostanie liczba \"0\"");
+        Scanner scanner = new Scanner(System.in);
+
+        int liczba;
+        do {
+            liczba = scanner.nextInt();
+            if (liczba > max) {
+                max = liczba;
+            }
+            if (liczba < min) {
+                min = liczba;
+            }
+        } while (liczba != 0);
+        System.out.println(max + min + " jest to suma najmniejszej i największej z podanych liczb");
+        System.out.println(((max + min) / 2) + " jest to średnia arytmetyczna tych dwóch liczb");
+    }
+
+    //Napisać program rysujący w konsoli „obrazek” złożony ze znaków gwiazdki (*).
+    // Użytkownik programu powinien podać liczbę całkowitą n, n > 0, określającą wysokość obrazka (liczbę wierszy).
+    //Przykład: dla n = 5 wynik powinien wyglądać następująco:
+    //*
+    //**
+    //***
+    //****
+    //*****
+    public void zadanie13() {
+        int x;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj wielkość obrazka: ");
+        x = scanner.nextInt();
+
+        for (int i = 0; i < x; i++) {
+            for (int j = x - i; j <= x; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
     }
 
 }

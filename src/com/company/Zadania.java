@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Zadania {
@@ -383,6 +384,37 @@ public class Zadania {
             }
             System.out.println();
         }
+
+    }
+
+    //Gra w ”Za dużo, za mało”. Komputer losuje liczbę z zakresu 1 . . . 100, a gracz
+    //(użytkownik) ma za zadanie odgadnąć, co to za liczba poprzez podawanie kolejnych wartości. Jeżeli podana wartość jest:
+    //• większa – wyświetlany jest komunikat „Podałeś za dużą wartość”,
+    //• mniejsza – wyświetlany jest komunikat „Podałeś za małą wartość”,
+    //• identyczna z wylosowaną – wyświetlany jest komunikat „Gratulacje” i gra
+    //się kończy.
+    public void zadanie14() {
+        Random random = new Random();
+        int liczba = random.nextInt(100) + 1;
+        int zgaduj = 0;
+        int liczbaProb = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Musisz zgadnąć jaka to liczba z zakresu od 1 do 100");
+
+        while (zgaduj != liczba) {
+            System.out.println("Jak myślisz jaka to liczba z zakresu od 1 do 100 ?");
+            zgaduj = scanner.nextInt();
+            liczbaProb++;
+            if (zgaduj < liczba) {
+                System.out.println("Podałeś za małą wartość");
+            } else if (zgaduj > liczba) {
+                System.out.println("Podałeś za dużą wartość");
+            } else {
+                System.out.println("Gratulacje");
+                System.out.println("Zgadłeś w " + liczbaProb + " próbie");
+            }
+        }
+
 
     }
 

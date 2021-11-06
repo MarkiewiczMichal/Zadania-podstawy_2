@@ -414,8 +414,52 @@ public class Zadania {
                 System.out.println("Zgadłeś w " + liczbaProb + " próbie");
             }
         }
+    }
 
+    //Napisać program działający w trybie konsolowym (tekstowym) i rysujący na ekranie prostokąt.
+    // Użytkownik podaje znak wypełnienia prostokąta, pozycję lewego
+    //górnego rogu prostokąta (x, y) oraz długości boków prostokąta (ab). Przyjmujemy,
+    //że lewy górny narożnik konsoli ma współrzędne (x, y) = (1, 1).
+    //Przykład: x=6, y=3, a=4, b=6, zn=’x’
+    //>
+    //>
+    //> _____xxxxxx
+    //> _____xxxxxx
+    //> _____xxxxxx
+    //> _____xxxxxx
+    //ozn.
+    //> - nowa linia,
+    //_ - znak spacji.
+    public void zadanie15() {
+        int x, y, a, b;
+        char zn;
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj współrzędne lewego górnego rogu prostokąta wsp x= ");
+        x = scanner.nextInt();
+        System.out.println("Podaj współrzędne lewego górnego rogu prostokąta wsp y= ");
+        y = scanner.nextInt();
+        System.out.println("Podaj wysokość prostokąta a= ");
+        a = scanner.nextInt();
+        System.out.println("Podaj szerokość prostokąta b= ");
+        b = scanner.nextInt();
+        System.out.println("Podaj znak którym zamalujemy prosotkąt: ");
+        zn = scanner.next().charAt(0);
+        System.out.println(zn);
+
+        for (int i = 1; i < y; i++) {
+            System.out.println("");
+        }
+
+        for (int i = 0; i <a ; i++) {
+            for (int j = 0; j < x; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j <b ; j++) {
+                System.out.print(zn);
+            }
+            System.out.println();
+        }
     }
 
 }

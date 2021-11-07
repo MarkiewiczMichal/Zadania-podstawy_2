@@ -451,15 +451,78 @@ public class Zadania {
             System.out.println("");
         }
 
-        for (int i = 0; i <a ; i++) {
+        for (int i = 0; i < a; i++) {
             for (int j = 0; j < x; j++) {
                 System.out.print(" ");
             }
-            for (int j = 0; j <b ; j++) {
+            for (int j = 0; j < b; j++) {
                 System.out.print(zn);
             }
             System.out.println();
         }
+    }
+
+    //Napisać program rysujący w konsoli „choinkę” złożoną ze znaków gwiazdki (*).
+    //Użytkownik programu powinien podać liczbę całkowitą n, n > 0, określającą
+    //wysokość choinki (liczbę wierszy).
+    //Przykład: dla n = 5 wynik powinien wyglądać następująco:
+    //    *
+    //   ***
+    //  *****
+    // *******
+    //*********
+    public void zadanie16() {
+        int x;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj wielkość choinki: ");
+        x = scanner.nextInt();
+
+        for (int i = 0; i < x; i++) {
+            for (int j = 1; j < x - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j <= i; j++) {
+                System.out.print("*");
+            }
+            if (i > 0) {
+                for (int j = 0; j < i; j++) {
+                    System.out.print("*");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    //Napisać program, który pobiera od użytkownika liczbę całkowitą, a następnie:
+    //• oblicza sumę cyfr tej liczby,
+    //• stosunek średniej arytmetycznej cyfr parzystych do średniej arytmetycznej
+    //cyfr nieparzystych.
+    public void zadanie17() {
+        int x, liczbaJednosci = 0, sumaCyfr = 0, licznikParzysty = 0, licznikNieParzysty = 0;
+        double sredniaParzystych = 0, sredniaNieParzystych = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj swoją liczbę");
+        x = scanner.nextInt();
+
+        while (x != 0) {
+            liczbaJednosci = x % 10;
+            sumaCyfr += liczbaJednosci;
+            if (liczbaJednosci % 2 == 0) {
+                sredniaParzystych += liczbaJednosci;
+                licznikParzysty++;
+            }
+            if (liczbaJednosci % 2 != 0) {
+                sredniaNieParzystych += liczbaJednosci;
+                licznikNieParzysty++;
+            }
+            x = x / 10;
+        }
+        System.out.println("Suma cyfr podanej liczby wynosi: " + sumaCyfr);
+        System.out.println("średnia arytmetyczna liczb parzystych wynosi: " + sredniaParzystych / licznikParzysty);
+        System.out.println("średnia arytmetyczna liczb nieparzystych wynosi: " + sredniaNieParzystych / licznikNieParzysty);
+        System.out.println("Storunek średnich wynosi: " + (sredniaParzystych / licznikParzysty) / (sredniaNieParzystych / licznikNieParzysty));
+
+
     }
 
 }

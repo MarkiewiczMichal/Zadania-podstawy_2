@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -521,9 +523,155 @@ public class Zadania {
         System.out.println("średnia arytmetyczna liczb parzystych wynosi: " + sredniaParzystych / licznikParzysty);
         System.out.println("średnia arytmetyczna liczb nieparzystych wynosi: " + sredniaNieParzystych / licznikNieParzysty);
         System.out.println("Storunek średnich wynosi: " + (sredniaParzystych / licznikParzysty) / (sredniaNieParzystych / licznikNieParzysty));
-
-
     }
 
+    //Napisać program, dla podanej liczby całkowitej wyświetla jej dzielniki.
+    // Przykładowo, dla liczby 21 dzielniki to: 1, 3, 7, 21.
+    public void zadanie18() {
+        int x;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Program służy do wyświeltenia liczników podanej przez urzytkownika liczby");
+        System.out.println("Podaj swoją liczbę");
+        x = scanner.nextInt();
+        ArrayList<Integer> dzielniki = new ArrayList<Integer>();
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
+                dzielniki.add(i);
+            }
+        }
+        System.out.print(dzielniki);
+    }
+
+    //Napisać program, który sprawdza, czy podana liczba całkowita n, n > 1, jest
+    //liczbą pierwszą.
+    public void zadanie19() {
+        int x, dzielniki = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Program służy do sprawdzenia czy podana przez urzytkownika liczba jest liczbą pierwszą");
+        System.out.println("Podaj swoją liczbę całkowitą większą od 1");
+        x = scanner.nextInt();
+
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
+                dzielniki++;
+            }
+        }
+
+        if (dzielniki == 2) {
+            System.out.println("Podana liczba " + x + " jest liczbą pierwszą");
+        } else {
+            System.out.println("Liczba " + x + " nie jest liczbą pierwszą");
+        }
+    }
+
+    //Napisać program, który:
+    //• utworzy tablicę 10 liczb całkowitych i wypełni ją wartościami losowymi z
+    //przedziału [−10, . . . , 10],
+    //• wypisze na ekranie zawartość tablicy,
+    //• wyznaczy najmniejszy oraz najwięszy element w tablicy,
+    //• wyznaczy średnią arytmetyczną elementów tablicy,
+    //• wyznaczy ile elementów jest mniejszych, ile większych od średniej.
+    //• wypisze na ekranie zawartość tablicy w odwrotnej kolejności, tj. od ostatniego do pierwszego.
+    //Wszystkie wyznaczone wartości powinny zostać wyświetlone na ekranie.
+    //Wylosowane liczby:
+    //-3 9 2 -10 -3 -4 -1 -5 -10 8
+    //Min: -10, max: 9
+    //Średnia: -1,00
+    //Mniejszych od śr.: 6
+    //Większych od śr.: 3
+    //Liczby w odwrotnej kolejności:
+    //8 -10 -5 -1 -4 -3 -10 2 9 -3
+    public void zadanie20() {
+        int[] tab = new int[10];
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        int sumaLiczb = 0;
+        double srednia;
+        int liczWiekszeSrednia = 0;
+        int liczMniejszeSrednia = 0;
+        Random random = new Random();
+
+        for (int i = 0; i < tab.length; i++) {
+            tab[i] = random.nextInt(20) - 10;
+            if (tab[i] < min) {
+                min = tab[i];
+            }
+            if (tab[i] > max) {
+                max = tab[i];
+            }
+            sumaLiczb += tab[i];
+        }
+
+        srednia = (double) sumaLiczb / (double) tab.length;
+
+        for (int x : tab) {
+            if (x > srednia) {
+                liczWiekszeSrednia++;
+            }
+            if (x < srednia) {
+                liczMniejszeSrednia++;
+            }
+        }
+
+        System.out.println("Wylosowane liczby: ");
+        for (int k : tab) {
+            System.out.print(k + ", ");
+        }
+        System.out.println();
+        System.out.println("Min: " + min + " max: " + max);
+        System.out.println("średnia: " + srednia);
+        System.out.println("Mniejszych od śr: " + liczMniejszeSrednia);
+        System.out.println("Większych od śr: " + liczWiekszeSrednia);
+        System.out.println("Liczby w odwrotnej kolejności");
+
+        for (int i = tab.length - 1; i >= 0; i--) {
+            System.out.print(tab[i] + ", ");
+        }
+    }
+
+    //Napisać program, który utworzy tablicę 20 liczb całkowitych z przedziału 1 . . . 10,
+    //a następnie wypisze na ekranie ile razy każda z liczb z tego przedziału powtarza
+    //się w tablicy.
+    //Przykład:
+    //Wylosowane liczby: 6 5 4 5 10 5 8 3 10 6 6 6 4 3 2 8 1 3 4 7
+    //Wystąpienia:
+    //1 - 1
+    //2 - 1
+    //3 - 3
+    //4 - 3
+    //5 - 3
+    //6 - 4
+    //7 - 1
+    //8 - 2
+    //9 - 0
+    //10 - 2
+    public void zadanie21() {
+        int[] tab = new int[20];
+        HashMap<Integer, Integer> results = new HashMap<>();
+        Random random = new Random();
+        for (int i = 0; i < tab.length; i++) {
+            tab[i] = random.nextInt(10) + 1;
+            if (results.containsKey(tab[i])) {
+                results.put(tab[i], results.get(tab[i]) + 1);
+            } else {
+                results.put(tab[i], 1);
+            }
+        }
+
+        System.out.println("Wylosowane liczby");
+        for (int j : tab) {
+            System.out.print(j + ", ");
+        }
+        System.out.println();
+        System.out.println("Wystąpienia");
+        for (int i = 1; i <= 10; i++) {
+            if (results.containsKey(i)) {
+                System.out.println(i + "___-> " + results.get(i));
+            } else {
+                System.out.println(i + "___-> 0");
+            }
+        }
+    }
 }
+
 

@@ -521,9 +521,115 @@ public class Zadania {
         System.out.println("średnia arytmetyczna liczb parzystych wynosi: " + sredniaParzystych / licznikParzysty);
         System.out.println("średnia arytmetyczna liczb nieparzystych wynosi: " + sredniaNieParzystych / licznikNieParzysty);
         System.out.println("Storunek średnich wynosi: " + (sredniaParzystych / licznikParzysty) / (sredniaNieParzystych / licznikNieParzysty));
-
-
     }
 
+    //Napisz program, który:
+    //• stworzy tablicę (macierz) 5 x 5 liczb całkowitych,
+    //• wypełnij ją losowymi wartościami z zakresu {−5, −4, . . . , 5},
+    //• dla każdej kolumny wyznacz minimum,
+    //• dla każdej kolumny wyznaczy maksimum.
+    //Program ma wyświetlać tablicę wypełnioną liczbami oraz tablice z minimami oraz
+    //maksymami.
+    public void zadanie22() {
+        int[][] tab = new int[5][5];
+        int[] mintab = new int[]{10, 10, 10, 10, 10};
+        int[] maxtab = new int[]{-10, -10, -10, -10, -10};
+        Random random = new Random();
+
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab[i].length; j++) {
+                tab[i][j] = random.nextInt(11) - 5;
+            }
+        }
+
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab[i].length; j++) {
+                System.out.print("[" + tab[i][j] + "] ");
+                if (tab[i][j] > maxtab[j]) {
+                    maxtab[j] = tab[i][j];
+                }
+                if (tab[i][j] < mintab[j]) {
+                    mintab[j] = tab[i][j];
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("Minimalne wartości w poszczególnych kolumnach");
+        for (int x : mintab) {
+            System.out.print(x + ", ");
+        }
+        System.out.println();
+        System.out.println("Maksymalne wartości w poszczególnych kolumnach");
+        for (int x : maxtab) {
+            System.out.print(x + ", ");
+        }
+    }
+
+    //Napisz program, który pobiera od użytkownika dodatnią liczbę naturalną n i
+    //tworzy tablicę a zmiennych typu logicznego (boolean) o rozmiarze n×n. Następnie
+    //program powinien wypełnić utworzoną tablicę, tak by a[i][j] = true jeżeli liczby
+    //(i+1) oraz (j+1) są względnie pierwsze, tzn. nie mają wspólnych dzielników poza
+    //1. Tak utworzoną tablicę należy wypisać na ekranie, przy czym dla wartości true
+    //należy wyświetlić znak ”+”, natomiast dla wartości false znak ”.”. Przykład:
+    //Podaj liczbę (> 0): 10
+    //  1 2 3 4 5 6 7 8 9 10
+    //1 + + + + + + + + + +
+    //2 + . + . + . + . + .
+    //3 + + . + + . + + . +
+    //4 + . + . + . + . + .
+    //5 + + + + . + + + + .
+    //6 + . . . + . + . . .
+    //7 + + + + + + . + + +
+    //8 + . + . + . + . + .
+    //9 + + . + + . + + . +
+    //10 + . + . . . + . + .
+    // metoda do obliczenia NWD
+    static int nwd(int a, int b) {
+        while (a != b) {
+            if (a < b) {
+                b -= a;
+            } else {
+                a -= b;
+            }
+        }
+        return a;
+    }
+
+    public void zadanie23() {
+        System.out.println("Podaj liczbe naturalna większą od \"0\"");
+        Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+        boolean[][] a = new boolean[x][x];
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                if (nwd(i + 1, j + 1) == 1) {
+                    System.out.print("+");
+                } else {
+                    System.out.print(".");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    //Napisać program, który wczytuje od użytkownika ciąg znaków,
+    // a następnie wyświetla informację o tym ile razy w tym ciągu powtarza się jego ostatni znak.
+    //Przykład, dla ciągu „Abrakadabra” program powinien wyświetlić 4, ponieważ
+    //ostatnim znakiem jest literka „a”, która występuje w podanym ciągu łącznie 4
+    //razy.
+    public void zadanie24() {
+        int counter = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj jakieś słowo a program policzy ile razy powtarza się jego ostatni znak");
+        String word = scanner.next();
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == word.charAt(word.length() - 1)) {
+                counter++;
+            }
+        }
+        System.out.println("Literka :" + word.charAt(word.length() - 1) + " w słowie " + word + " występuje " + counter + " razy");
+    }
 }
 

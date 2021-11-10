@@ -525,6 +525,7 @@ public class Zadania {
         System.out.println("Storunek średnich wynosi: " + (sredniaParzystych / licznikParzysty) / (sredniaNieParzystych / licznikNieParzysty));
     }
 
+
     //Napisać program, dla podanej liczby całkowitej wyświetla jej dzielniki.
     // Przykładowo, dla liczby 21 dzielniki to: 1, 3, 7, 21.
     public void zadanie18() {
@@ -672,4 +673,225 @@ public class Zadania {
             }
         }
     }
+  //Napisz program, który:
+    //• stworzy tablicę (macierz) 5 x 5 liczb całkowitych,
+    //• wypełnij ją losowymi wartościami z zakresu {−5, −4, . . . , 5},
+    //• dla każdej kolumny wyznacz minimum,
+    //• dla każdej kolumny wyznaczy maksimum.
+    //Program ma wyświetlać tablicę wypełnioną liczbami oraz tablice z minimami oraz
+    //maksymami.
+    public void zadanie22() {
+        int[][] tab = new int[5][5];
+        int[] mintab = new int[]{10, 10, 10, 10, 10};
+        int[] maxtab = new int[]{-10, -10, -10, -10, -10};
+        Random random = new Random();
+
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab[i].length; j++) {
+                tab[i][j] = random.nextInt(11) - 5;
+            }
+        }
+
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab[i].length; j++) {
+                System.out.print("[" + tab[i][j] + "] ");
+                if (tab[i][j] > maxtab[j]) {
+                    maxtab[j] = tab[i][j];
+                }
+                if (tab[i][j] < mintab[j]) {
+                    mintab[j] = tab[i][j];
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("Minimalne wartości w poszczególnych kolumnach");
+        for (int x : mintab) {
+            System.out.print(x + ", ");
+        }
+        System.out.println();
+        System.out.println("Maksymalne wartości w poszczególnych kolumnach");
+        for (int x : maxtab) {
+            System.out.print(x + ", ");
+        }
+    }
+
+    //Napisz program, który pobiera od użytkownika dodatnią liczbę naturalną n i
+    //tworzy tablicę a zmiennych typu logicznego (boolean) o rozmiarze n×n. Następnie
+    //program powinien wypełnić utworzoną tablicę, tak by a[i][j] = true jeżeli liczby
+    //(i+1) oraz (j+1) są względnie pierwsze, tzn. nie mają wspólnych dzielników poza
+    //1. Tak utworzoną tablicę należy wypisać na ekranie, przy czym dla wartości true
+    //należy wyświetlić znak ”+”, natomiast dla wartości false znak ”.”. Przykład:
+    //Podaj liczbę (> 0): 10
+    //  1 2 3 4 5 6 7 8 9 10
+    //1 + + + + + + + + + +
+    //2 + . + . + . + . + .
+    //3 + + . + + . + + . +
+    //4 + . + . + . + . + .
+    //5 + + + + . + + + + .
+    //6 + . . . + . + . . .
+    //7 + + + + + + . + + +
+    //8 + . + . + . + . + .
+    //9 + + . + + . + + . +
+    //10 + . + . . . + . + .
+    // metoda do obliczenia NWD
+    static int nwd(int a, int b) {
+        while (a != b) {
+            if (a < b) {
+                b -= a;
+            } else {
+                a -= b;
+            }
+        }
+        return a;
+    }
+
+    public void zadanie23() {
+        System.out.println("Podaj liczbe naturalna większą od \"0\"");
+        Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+        boolean[][] a = new boolean[x][x];
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                if (nwd(i + 1, j + 1) == 1) {
+                    System.out.print("+");
+                } else {
+                    System.out.print(".");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    //Napisać program, który wczytuje od użytkownika ciąg znaków,
+    // a następnie wyświetla informację o tym ile razy w tym ciągu powtarza się jego ostatni znak.
+    //Przykład, dla ciągu „Abrakadabra” program powinien wyświetlić 4, ponieważ
+    //ostatnim znakiem jest literka „a”, która występuje w podanym ciągu łącznie 4
+    //razy.
+    public void zadanie24() {
+        int counter = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj jakieś słowo a program policzy ile razy powtarza się jego ostatni znak");
+        String word = scanner.next();
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == word.charAt(word.length() - 1)) {
+                counter++;
+            }
+        }
+        System.out.println("Literka :" + word.charAt(word.length() - 1) + " w słowie " + word + " występuje " + counter + " razy");
+    }
+
+    //Napisać program, który wczytuje od użytkownika ciąg znaków,
+    //a następnie tworzy łańcuch będący odwróceniem podanego łańcucha i wyświetla go na ekranie.
+    //Przykładowo, dla łańcucha „Kot” wynikiem powinien być łańcuch „toK”.
+    public void zadanie25() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Program wyświetla łańcuch będący odwróceniem podanego przez użytkownika");
+        String word = scanner.next();
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            System.out.print(word.charAt(i));
+        }
+    }
+
+    //Napisać program, który wczytuje od użytkownika ciąg znaków,
+    // a następnie sprawdza, czy podany ciąg jest palindromem.
+    public void zadanie26() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Program sprawdza czy podane słowo jest palindromem");
+        String word = scanner.next();
+        int counter = 0;
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == word.charAt(word.length() - i - 1)) {
+                counter++;
+            }
+        }
+        if (counter == word.length()) {
+            System.out.println("Podane słowo jest palindromem");
+        } else System.out.println("Niestety podane słowo nie jest palindromem");
+    }
+
+    //Napisać program, który sumuje cyfry w tekście podanym przez użytkownika.
+    //Przykład:
+    //"Ala ma 1 psa i 2 koty. Jola ma 10 rybek i 2 papugi."
+    //Wynik:
+    //6
+    public void zadanie27() {
+        String word = "Ala ma 1 psa i 2 koty. Jola ma 10 rybek i 2 papugi.";
+        System.out.println("Program sumuje cyfry w podanym tekscie");
+        int suma = 0;
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) >= 48 && word.charAt(i) <= 57) {
+                suma += word.charAt(i) % 48;
+            }
+        }
+        System.out.println(suma);
+    }
+
+    //Napisz program, który sprawdzi, czy w podanym przez użytkownika wyrażeniu
+    //arytmetycznym nawiasy są poprawnie sparowane. Wyrażenie podawane jest jako
+    //pojedynczy łańcuch znaków. Program powinien wyświetlić stosowny komunikat.
+    //Przykład a:
+    //"2 * (3.4 - (-7)/2)*(a-2)/(b-1)))"
+    //Wynik:
+    //Błędne sparowanie nawiasów
+    //Przykład b:
+    //"2 * (3.4 - (-7)/2)*(a-2)/(b-1))"
+    //Wynik:
+    //OK
+    public void zadanie28() {
+        String a = "2 * (3.4 - (-7)/2)*(a-2)/(b-1)))";
+        String b = "2 * (3.4 - (-7)/2)*(a-2)/(b-1))";
+        System.out.println("Program sprawdza czy nawiasy okrągłe są poprawnie sparowane w wyrażeniu arytmetycznym");
+        int ile = 0;
+        for (int i = 0; i < a.length(); i++) {
+            //kod ASCII dla "(" wynosi 40
+            if (a.charAt(i) == 40) {
+                ile++;
+            }
+            if (a.charAt(i) == 41) {
+                ile--;
+            }
+        }
+        if (ile == 0) {
+            System.out.println("Parowanie nawiasów jest ok");
+        } else System.out.println("Błędne sparowanie nawiasów");
+    }
+
+    //Napisz program, który umożliwia szyfrowanie podanego ciągu znaków przy użyciu szyfru Cezara,
+    // który jest szczególnym przypadkiem szyfru podstawieniowego
+    //monoalfabetycznego.
+    //Użytkownik program podaje tekst do zaszyfrowania oraz liczbę n,
+    // o którą przesunięty jest alfabet za pomocą którego szyfrujemy tekst. Dla uproszczenia można
+    //przyjąć, że łańuch wejściowy składa się tylko z małych liter alfabetu angielskiego,
+    //tj. ’a’ – ’z’ (26 znaków) oraz spacji.
+    //Przykład 1.
+    //Podaj łańcuch znaków do zaszyfrowania: abrakadabraz
+    //Podaj przesunięcie: 2
+    //Zaszyfrowany tekst: cdtcmcfcdtcb
+    //Przykład 2.
+    //Podaj łańcuch znaków do zaszyfrowania: cdtcmcfcdtcb
+    //Podaj przesunięcie: -2
+    //Zaszyfrowany tekst: abrakadabraz
+    public void zadanie29() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Program szyfruje podane przez użytkowanika słowo");
+        System.out.println("Podaj słowo");
+        String word = scanner.next();
+        System.out.println("Podaj liczbe szyfrującą");
+        int x = scanner.nextInt();
+        int helper;
+        for (int i = 0; i < word.length(); i++) {
+            helper = word.charAt(i) + x % 26;
+            if (helper > 122) {
+                helper-=26;
+            }
+            if (helper <97){
+                helper+=26;
+            }
+            System.out.print((char) helper);
+        }
+    }
+}
 }

@@ -673,7 +673,8 @@ public class Zadania {
             }
         }
     }
-  //Napisz program, który:
+
+    //Napisz program, który:
     //• stworzy tablicę (macierz) 5 x 5 liczb całkowitych,
     //• wypełnij ją losowymi wartościami z zakresu {−5, −4, . . . , 5},
     //• dla każdej kolumny wyznacz minimum,
@@ -885,13 +886,13 @@ public class Zadania {
         for (int i = 0; i < word.length(); i++) {
             helper = word.charAt(i) + x % 26;
             if (helper > 122) {
-                helper-=26;
+                helper -= 26;
             }
-            if (helper <97){
-                helper+=26;
+            if (helper < 97) {
+                helper += 26;
             }
             System.out.print((char) helper);
         }
     }
 }
-}
+

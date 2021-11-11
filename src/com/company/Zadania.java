@@ -894,5 +894,76 @@ public class Zadania {
             System.out.print((char) helper);
         }
     }
+
+    //Napisz funkcję, która zwraca wartość silni dla podanej liczby n. Funkcja powinna
+    //być napisana w dwóch wersjach: iteracyjnej i rekurencyjnej.
+    static int silniaR(int a) {
+        if (a == 0) return 1;
+        a *= silniaR(a - 1);
+        return a;
+    }
+
+    static int silniaI(int a) {
+        int iloczyn = 1;
+        for (int i = 1; i <= a; i++) {
+            iloczyn *= i;
+        }
+        return iloczyn;
+    }
+
+    public void zadanie30() {
+        int x = 10;
+        System.out.println(silniaR(x));
+        System.out.println(silniaI(x));
+    }
+
+    //Napisz funkcję, która zwraca wartość n-tego wyrazu ciągu Fibonacciego. Funkcja
+    //powinna być napisana w dwóch wersjach: iteracyjnej i rekurencyjnej.
+    //Ciąg Fibonacciego dany jest wzorem:
+    //Fn =
+    //0 gdy n = 0 ,
+    //1 gdy n = 1 ,
+    //Fn−2 + Fn−1 gdy n > 1 .
+    static int fibonacciR(int a) {
+        if (a == 0) return 0;
+        if (a == 1) return 1;
+        a = fibonacciR(a - 2) + fibonacciR(a - 1);
+        return a;
+    }
+
+    static int fibonacciI(int a) {
+        if (a < 2) return a;
+        int elementA = 0;
+        int elementB = 1;
+        int wynik = 0;
+
+        for (int i = 2; i <= a; i++) {
+            wynik = elementA + elementB;
+            elementA = elementB;
+            elementB = wynik;
+        }
+        return wynik;
+    }
+
+    public void zadanie31() {
+        int x = 10;
+        System.out.println(fibonacciR(x));
+        System.out.println(fibonacciI(x));
+    }
+
+    //Zdefiniować funkcję int strpos(String text, char z) , która zwraca indeks
+    //na którym znajduje się znak z (drugi parametr) w podanym łańcuchu text .
+    //Jeżeli znak z nie występuje w łańcuchu, to wynikiem funkcji powinno być -1.
+    //Uwaga - pozycje znaków numerujemy począwszy od 0.
+    static int strpos(String text, char z){
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i)==z) return i;
+        }
+        return -1;
+    }
+    public void zadanie32(){
+        System.out.println(strpos("dupa_blada",'a'));
+        System.out.println(strpos("zagdka",'y'));
+    }
 }
 

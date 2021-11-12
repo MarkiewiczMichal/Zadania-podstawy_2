@@ -955,15 +955,84 @@ public class Zadania {
     //na którym znajduje się znak z (drugi parametr) w podanym łańcuchu text .
     //Jeżeli znak z nie występuje w łańcuchu, to wynikiem funkcji powinno być -1.
     //Uwaga - pozycje znaków numerujemy począwszy od 0.
-    static int strpos(String text, char z){
+    static int strpos(String text, char z) {
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i)==z) return i;
+            if (text.charAt(i) == z) return i;
         }
         return -1;
     }
-    public void zadanie32(){
-        System.out.println(strpos("dupa_blada",'a'));
-        System.out.println(strpos("zagdka",'y'));
+
+    public void zadanie32() {
+        System.out.println(strpos("dupa_blada", 'a'));
+        System.out.println(strpos("zagdka", 'y'));
     }
+
+    //Napisać funkcję String flipCase(String text) , która zamieni małe litery na
+    //duże i odwrotnie w łańcuchu podanym jako parametr. Wynikiem ma być łańcuch
+    //znaków zawierający kopię łańcucha po zmianie wielkości liter.
+    static String flipCase(String text) {
+        StringBuilder helper = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) > 65 && text.charAt(i) > 90) {
+                helper.append((char) (text.charAt(i) - 32));
+            } else
+                helper.append((char) (text.charAt(i) + 32));
+        }
+
+        return helper.toString();
+    }
+
+    public void zadanie33() {
+        System.out.println(flipCase("Zadanie"));
+        System.out.println(flipCase("zALICZONE"));
+    }
+
+    //Zdefiniować funkcję boolean startsWith(String str1, String str2) , która
+    //sprawdza, czy łańcuch str2 jest prefiksem łańcucha str1 .
+    //Przykłady:
+    //startsWith("Alibaba", "Ali") - wynik true, ponieważ wyraz
+    //"Alibaba" zaczyna się wyrazem "Ali".
+    //startsWith("Alibaba", "Alibaba") - wynik true, ponieważ wyraz jest
+    //zawsze swoim prefiksem.
+    //startsWith("Kot", "Pies") - wynik false, ponieważ wyraz "Pies"
+    //nie jest prefiksem wyrazu "Kot"
+    static boolean startsWith(String str1, String str2) {
+        if (str2.length() > str1.length()) return false;
+        return (str1.substring(0, str2.length()).equals(str2));
+    }
+
+    public void zadanie34() {
+        System.out.println(startsWith("Alibaba", "Ali"));
+        System.out.println(startsWith("Alibaba", "Alibaba"));
+        System.out.println(startsWith("Kot", "Pies"));
+
+    }
+
+    //Zdefiniować funkcję int strToInt(String str) ,
+    // która zamienia liczbę całkowitą zapisaną w postaci łańcucha na liczbę całkowitą typu int.
+    // Funkcja powinna przerywać konwersję w momencie napotkania pierwszego znaku nie należącego do
+    //zapisu liczby, zatem np. dla strToInt("-13krowa") wynikiem powinno być -13.
+    //Pozostałe przykłady:
+    //strToInt("+12") - wynik 12
+    //strToInt("0001") - wynik 1
+    //strToInt("991-234-23") - wynik 991
+    //strToInt("+zonk") - wynik 0
+    //strToInt("") - wynik 0
+    //strToInt("-12e5") - wynik -12*10^5 = -120000
+    //strToInt("-12e-5") - wynik -12, tylko dodatnie wykładniki są rozpatrywane
+    public void zadanie35() {
+        Scanner scanner = new Scanner(System.in);
+        String str="991";
+        int results=0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i)>='0' && str.charAt(i)<='9'){
+                results = (results*10)+ str.charAt(i)%48;
+                System.out.println(str.charAt(i));
+            }
+        }
+        System.out.println(results);
+    }
+
 }
 

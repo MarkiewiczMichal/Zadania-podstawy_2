@@ -1022,12 +1022,16 @@ public class Zadania {
     //strToInt("-12e-5") - wynik -12, tylko dodatnie wykładniki są rozpatrywane
     public void zadanie35() {
         Scanner scanner = new Scanner(System.in);
-        String str="991";
-        int results=0;
+        String str = "991";
+        int results = 0;
+        boolean negative = false;
 
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i)>='0' && str.charAt(i)<='9'){
-                results = (results*10)+ str.charAt(i)%48;
+            if (str.charAt(i) == '-') {
+                negative = true;
+            }
+            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                results = (results * 10) + str.charAt(i) % 48;
                 System.out.println(str.charAt(i));
             }
         }

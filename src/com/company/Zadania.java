@@ -1020,23 +1020,39 @@ public class Zadania {
     //strToInt("") - wynik 0
     //strToInt("-12e5") - wynik -12*10^5 = -120000
     //strToInt("-12e-5") - wynik -12, tylko dodatnie wykładniki są rozpatrywane
+     public static int strToInt(String str){
+         int results = 0;
+         boolean negative = false;
+
+         if (str.length()==0){
+             return results;
+         }else{
+             if (str.charAt(0) == '-') {
+                 negative = true;
+             }
+
+             for (int i = 0; i < str.length(); i++) {
+                 if (str.charAt(i)=='+' || str.charAt(i)=='-') {
+                    continue;
+                 }
+                 if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                     results = (results * 10) + str.charAt(i) % 48;
+                 } else break;
+             }
+         }
+         if (negative) {
+             return -results;
+         } else {
+             return results;
+         }
+     }
     public void zadanie35() {
-        Scanner scanner = new Scanner(System.in);
-        String str = "991";
-        int results = 0;
-        boolean negative = false;
-
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '-') {
-                negative = true;
-            }
-            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-                results = (results * 10) + str.charAt(i) % 48;
-                System.out.println(str.charAt(i));
-            }
-        }
-        System.out.println(results);
+        System.out.println(strToInt("+12"));
+        System.out.println(strToInt("0001"));
+        System.out.println(strToInt("991-234-23"));
+        System.out.println(strToInt("+zonk"));
+        System.out.println(strToInt(""));
+        System.out.println(strToInt("-12e5"));
     }
-
 }
 

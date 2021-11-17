@@ -1020,32 +1020,33 @@ public class Zadania {
     //strToInt("") - wynik 0
     //strToInt("-12e5") - wynik -12*10^5 = -120000
     //strToInt("-12e-5") - wynik -12, tylko dodatnie wykładniki są rozpatrywane
-     public static int strToInt(String str){
-         int results = 0;
-         boolean negative = false;
+    public static int strToInt(String str) {
+        int results = 0;
+        boolean negative = false;
 
-         if (str.length()==0){
-             return results;
-         }else{
-             if (str.charAt(0) == '-') {
-                 negative = true;
-             }
+        if (str.length() == 0) {
+            return results;
+        } else {
+            if (str.charAt(0) == '-') {
+                negative = true;
+            }
 
-             for (int i = 0; i < str.length(); i++) {
-                 if (str.charAt(i)=='+' || str.charAt(i)=='-') {
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) == '+' || str.charAt(i) == '-') {
                     continue;
-                 }
-                 if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-                     results = (results * 10) + str.charAt(i) % 48;
-                 } else break;
-             }
-         }
-         if (negative) {
-             return -results;
-         } else {
-             return results;
-         }
-     }
+                }
+                if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                    results = (results * 10) + str.charAt(i) % 48;
+                } else break;
+            }
+        }
+        if (negative) {
+            return -results;
+        } else {
+            return results;
+        }
+    }
+
     public void zadanie35() {
         System.out.println(strToInt("+12"));
         System.out.println(strToInt("0001"));
@@ -1053,6 +1054,44 @@ public class Zadania {
         System.out.println(strToInt("+zonk"));
         System.out.println(strToInt(""));
         System.out.println(strToInt("-12e5"));
+    }
+
+    //Zdefiniować funkcję int strfind(String gdzie, String co) ,
+    // która szuka łańcucha co w łańcuchu gdzie i jeżeli go znajdzie, to jej wynikiem jest pozycja,
+    //na której ten łańcuch zaczyna się w łańcuchu gdzie . Jeżeli nie udało się znaleźć
+    //łańcucha to wtedy wynikiem ma być -1.
+    //Przykłady:
+    //strfind("Ala ma kota", "ma") - wynik to 4
+    //strfind("Ala ma kota", "Ala ma kota") - wynik to 0
+    //strfind("Ala ma kota", "") - wynik to 0, bo pusty łańcuch jest
+    //podłańcuchem każdego innego łańcucha
+    //strfind("Pies", "jakis napis") - wynik to -1
+    //strfind("Ala ma kota", "pies") - wynik to -1
+    public static int strfind(String gdzie, String co) {
+        int counter = 0;
+        if (co.equals("")) return 0;
+        if (gdzie.length() == 0 || co.length() == 0) return -1;
+        if (gdzie.length() < co.length()) return -1;
+        for (int i = 0; i < gdzie.length(); i++) {
+            if (gdzie.charAt(i) == co.charAt(0)) {
+                for (int j = 0; j < co.length(); j++) {
+                    if(i+j == gdzie.length()) return -1;
+                    if (gdzie.charAt(i + j) == co.charAt(j)) {
+                        counter++;
+                    }
+                }
+            }
+            if (counter== co.length()) return i;
+        }
+        return -1;
+    }
+
+    public void zadanie36(){
+        System.out.println(strfind("Ala ma kota", "ma"));
+        System.out.println(strfind("Ala ma kota", "Ala ma kota"));
+        System.out.println(strfind("Ala ma kota", ""));
+        System.out.println(strfind("Pies", "jakis napis"));
+        System.out.println(strfind("Ala ma kota", "pies"));
     }
 }
 

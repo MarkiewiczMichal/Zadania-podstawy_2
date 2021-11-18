@@ -1075,23 +1075,51 @@ public class Zadania {
         for (int i = 0; i < gdzie.length(); i++) {
             if (gdzie.charAt(i) == co.charAt(0)) {
                 for (int j = 0; j < co.length(); j++) {
-                    if(i+j == gdzie.length()) return -1;
+                    if (i + j == gdzie.length()) return -1;
                     if (gdzie.charAt(i + j) == co.charAt(j)) {
                         counter++;
                     }
                 }
             }
-            if (counter== co.length()) return i;
+            if (counter == co.length()) return i;
         }
         return -1;
     }
 
-    public void zadanie36(){
+    public void zadanie36() {
         System.out.println(strfind("Ala ma kota", "ma"));
         System.out.println(strfind("Ala ma kota", "Ala ma kota"));
         System.out.println(strfind("Ala ma kota", ""));
         System.out.println(strfind("Pies", "jakis napis"));
         System.out.println(strfind("Ala ma kota", "pies"));
+    }
+
+    //Napisać funkcję int wordCount(String text) ,
+    // której wynikiem jest liczba wszystkich słów występujących w podanym jako parametr tekście.
+    // Do sprawdzania, czy
+    //dany znak tekstu jest „białym znakiem” można zastosować metodę
+    //Character.isWhitespace . Za słowo przyjmujemy każdy ciąg znaków niezawierający białego znaku.
+    public static int wordCount(String text) {
+        int counter =0;
+        for (int i = 0; i < text.length(); i++) {
+            if (Character.isWhitespace(text.charAt(i))) {
+                counter++;
+            }else if(i==text.length()-1){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public void zadanie37() {
+        String str = "Strasznie dobry program napisalem_wynik działania powinno byc 8";
+        System.out.println(wordCount(str));
+        System.out.println("Teraz sprawdzenie wbudowana metoda:");
+        int j =0;
+        for (String i : str.split(" ")) {
+            j++;
+        }
+        System.out.println(j);
     }
 }
 

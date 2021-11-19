@@ -1100,11 +1100,11 @@ public class Zadania {
     //dany znak tekstu jest „białym znakiem” można zastosować metodę
     //Character.isWhitespace . Za słowo przyjmujemy każdy ciąg znaków niezawierający białego znaku.
     public static int wordCount(String text) {
-        int counter =0;
+        int counter = 0;
         for (int i = 0; i < text.length(); i++) {
             if (Character.isWhitespace(text.charAt(i))) {
                 counter++;
-            }else if(i==text.length()-1){
+            } else if (i == text.length() - 1) {
                 counter++;
             }
         }
@@ -1115,11 +1115,50 @@ public class Zadania {
         String str = "Strasznie dobry program napisalem_wynik działania powinno byc 8";
         System.out.println(wordCount(str));
         System.out.println("Teraz sprawdzenie wbudowana metoda:");
-        int j =0;
+        int j = 0;
         for (String i : str.split(" ")) {
             j++;
         }
         System.out.println(j);
+    }
+
+    //Napisać funkcję String[] podzielNaSlowa(String tekst) ,
+    // która dzieli podany tekst na słowa i zapisuje je w tablicy.
+    // Wynikiem funkcji jest tablica zawierające
+    //kolejno słowa z tekstu. Za słowo przyjmujemy każdy ciąg znaków niezawierający
+    //białego znaku.
+    public static String[] podzielNaSlowa(String text) {
+        String[] tabOfWord = new String[wordCount(text)];
+        int a = 0;
+        int c = 0;
+
+        for (int i = 0; i < text.length(); i++) {
+            if (Character.isWhitespace(text.charAt(i))) {
+                tabOfWord[c] = text.substring(a, i);
+                a = i + 1;
+                c++;
+            } else if (i == text.length() - 1) {
+                tabOfWord[c] = text.substring(a, i + 1);
+            }
+        }
+        return tabOfWord;
+    }
+
+    public void zadanie38() {
+        String str = "Strasznie dobry program napisalem_wynik działania powinno byc 8";
+        System.out.println("ile powinno być słów ?");
+        System.out.println(podzielNaSlowa(str).length);
+        System.out.println("Oto i one:");
+        System.out.println();
+        for (String word : podzielNaSlowa(str)) {
+            System.out.println(word);
+        }
+        System.out.println();
+        System.out.println("Metoda dla zaawansowanych");
+        for (String i : str.split(" ")) {
+            System.out.println(i);
+        }
+
     }
 }
 

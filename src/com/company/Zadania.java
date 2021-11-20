@@ -1158,7 +1158,42 @@ public class Zadania {
         for (String i : str.split(" ")) {
             System.out.println(i);
         }
+    }
 
+    //Zdefiniować funkcję int strFindAndCount(String gdzie, String co) , która
+    //zlicza wystąpienia łańcucha co w łańcuchu gdzie .
+    // Jej wynikiem jest wyznaczona liczba wystąpień.
+    // Jeżeli nie udało się znaleźć łańcucha, to wtedy wynikiem jest, oczywiście, 0.
+    //Przykłady:
+    //strFindAndCount("Ala ma kota", "ma") - wynik to 1
+    //strFindAndCount("mama ma kota", "ma") - wynik to 3
+    //strFindAndCount("Ala mmaa ma kota", "ma") - wynik to 2
+    //strFindAndCount("Ala ma kota", "Asia") - wynik to 0
+    public static int strFindAndCount(String gdzie, String co) {
+        int helpCout = 0;
+        int count = 0;
+        for (int i = 0; i < gdzie.length(); i++) {
+            if (gdzie.charAt(i) == co.charAt(0)) {
+                for (int j = 0; j < co.length(); j++) {
+                    if (i + j == gdzie.length()) break;
+                    if (gdzie.charAt(i + j) == co.charAt(j)) {
+                        helpCout++;
+                    }
+                    if (helpCout == co.length()) {
+                        count++;
+                        helpCout = 0;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public void zadanie39() {
+        System.out.println(strFindAndCount("Ala ma kota", "ma"));
+        System.out.println(strFindAndCount("mama ma kota", "ma"));
+        System.out.println(strFindAndCount("Ala mmaa ma kota", "ma"));
+        System.out.println(strFindAndCount("Ala ma kota", "Asia"));
     }
 }
 

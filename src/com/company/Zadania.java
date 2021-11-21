@@ -1195,5 +1195,36 @@ public class Zadania {
         System.out.println(strFindAndCount("Ala mmaa ma kota", "ma"));
         System.out.println(strFindAndCount("Ala ma kota", "Asia"));
     }
+
+    //Zdefiniować procedurę String strcut(String str, int start, int ile) ,
+    // która wycina z podanego łańcucha wszystko co znajduje się w podanym zakresie.
+    // Wynikiem funkcji powinien być łańcuch bez znaków znajdujących się na pozycjach
+    //od start do start+ile-1 .
+    //Przykłady:
+    //strcut("Ala ma kota", 4, 3) - wynik to "Ala kota"
+    //strcut("Ala ma kota", 0, 4) - wynik to "ma kota"
+    //strcut("Ala ma kota", 0, 11) - wynik to ""
+    public static String strcut(String str, int start, int ile) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (i == start) {
+                for (int j = 0; j < ile; j++) {
+                    if(i+j==str.length()) break;
+                    // result += str.charAt(j + start);
+                    i++;
+                }
+            }
+            if(i>=str.length()) break;
+            result.append(str.charAt(i));
+        }
+
+        return result.toString();
+    }
+
+    public void zadanie40() {
+        System.out.println(strcut("Ala ma kota", 4, 3));
+        System.out.println(strcut("Ala ma kota", 0, 4));
+        System.out.println(strcut("Ala ma kota", 0, 11));
+    }
 }
 

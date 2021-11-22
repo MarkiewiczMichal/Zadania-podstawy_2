@@ -1209,12 +1209,12 @@ public class Zadania {
         for (int i = 0; i < str.length(); i++) {
             if (i == start) {
                 for (int j = 0; j < ile; j++) {
-                    if(i+j==str.length()) break;
+                    if (i + j == str.length()) break;
                     // result += str.charAt(j + start);
                     i++;
                 }
             }
-            if(i>=str.length()) break;
+            if (i >= str.length()) break;
             result.append(str.charAt(i));
         }
 
@@ -1225,6 +1225,31 @@ public class Zadania {
         System.out.println(strcut("Ala ma kota", 4, 3));
         System.out.println(strcut("Ala ma kota", 0, 4));
         System.out.println(strcut("Ala ma kota", 0, 11));
+    }
+
+    //Napisać funkcję String poprzestawiaj(String tekst, int [] kolejnosc) ,
+    //której wynikiem jest łańcuch złożony ze znaków w zmiennej tekst ułożonych wg
+    //kolejności podanej w tablicy kolejnosc , tzn. i-ty znak tekstu powinien znaleźć
+    //się w wynikowym łańcuchu na pozycji kolejnosc[i] .
+    //Przykład, dla poniższego wywołania funkcji:
+    //String tekst = "Egzamin";
+    //int [] kol = { 0, 1, 4, 3, 2, 6, 5 };
+    //System.out.println(poprzestawiaj(tekst, kol));
+    //wynikiem powinien być łańcuch:
+    //Egmazni
+
+    public static String poprzestawiaj(String tekst, int[] kolejnosc) {
+        StringBuilder helper = new StringBuilder();
+        for (int i = 0; i < tekst.length(); i++) {
+            helper.append(tekst.charAt(kolejnosc[i]));
+        }
+        return helper.toString();
+    }
+
+    public void zadanie41() {
+        String tekst = "Egzamin";
+        int[] kol = {0, 1, 4, 3, 2, 6, 5};
+        System.out.println(poprzestawiaj(tekst, kol));
     }
 }
 

@@ -1,10 +1,8 @@
 package com.company;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public class Zadania {
     Scanner scanner = new Scanner(System.in);
@@ -1250,6 +1248,42 @@ public class Zadania {
         String tekst = "Egzamin";
         int[] kol = {0, 1, 4, 3, 2, 6, 5};
         System.out.println(poprzestawiaj(tekst, kol));
+    }
+
+    //Napisać funkcję boolean czyAnagram(String t1, String t2) ,
+    // która sprawdza, czy łańcuch t2 jest anagramem tekstu t1 , czyli czy składa się z tych
+    //samych znaków, ale ustawionych niekoniecznie w tej samej kolejności
+    //Uwaga, należy sprawdzać jedynie małe i duże litery alfabetu angielskiego, jednak
+    //bez względu na ich wielkość, tzn. zarówno małe ’a’ jak i duże ’A’ liczone są tak
+    //samo. Pozostałe znaki nie są sprawdzane, a więc nie mają wpływu na to, czy
+    //słowo będzie uznane za anagram innego.
+    //Przykładowo, dla poniższego fragmentu programu:
+    //System.out.println(czyAnagram("kolej", "olejk"));
+    //System.out.println(czyAnagram("kolej", "kole"));
+    //System.out.println(czyAnagram("kolej", "K O L E J"));
+    //System.out.println(czyAnagram("Gregory House", "Huge ego, sorry"));
+    //na ekranie powinno zostać wyświetlone:
+    //true
+    //false
+    //true
+    //true
+    public static boolean czyAnagram(String t1, String t2) {
+        t1 = t1.toLowerCase();
+        t2 = t2.toLowerCase();
+        t1 = t1.replaceAll("([ -/])", "");
+        t2 = t2.replaceAll("([ -/])", "");
+        char[] tab1 = t1.toCharArray();
+        char[] tab2 = t2.toCharArray();
+        Arrays.sort(tab1);
+        Arrays.sort(tab2);
+        return Arrays.equals(tab1, tab2);
+    }
+
+    public void zadanie42() {
+        System.out.println(czyAnagram("kolej", "olejk"));
+        System.out.println(czyAnagram("kolej", "kole"));
+        System.out.println(czyAnagram("kolej", "K O L E J"));
+        System.out.println(czyAnagram("Gregory House", "Huge ego, sorry"));
     }
 }
 

@@ -1285,5 +1285,52 @@ public class Zadania {
         System.out.println(czyAnagram("kolej", "K O L E J"));
         System.out.println(czyAnagram("Gregory House", "Huge ego, sorry"));
     }
+
+    //W języku HTML oraz kaskadowych arkuszach stylów (CSS) powszechne jest ustalanie kolorów elementów
+    // w postaci łańcucha #RRGGBB, gdzie RR jest dwucyfrową
+    //liczbą (od 0x0 do 0xFF) w kodzie szesnastkowym oznaczającą ile czerwieni jest
+    //w wynikowym kolorze. Analogicznie GG oznacza nasycenie zieleni, a BB niebieskiego.
+    //Napisać funkcję int [] HTMLColor2RGB(String color) , która jako parametr
+    //przyjmuje łańcuch postaci ”#RRGGBB” i zwraca tablicę 3 liczb całkowitych w
+    //systemie 10 oznaczających nasycenie poszczególnych składowych.
+    //Przykład
+    //Wynikiem HTMLColor2RGB("#FF0050") powinna być tablica { 255, 0, 80 }.
+    //Wynikiem HTMLColor2RGB("#001020") powinna być tablica { 0, 16, 32 }.
+    public static int[] HTMLColor2RGB(String color) {
+        int[] tab = new int[3];
+        int helper = 0;
+        int tabCounter = 0;
+        for (int i = 1; i < color.length(); i++) {
+            if (color.charAt(i) >= 48 && color.charAt(i) <= 57) {
+                if (i % 2 == 1) {
+                    helper += 16 * Character.getNumericValue(color.charAt(i));
+                } else {
+                    helper += Character.getNumericValue(color.charAt(i));
+                }
+            } else {
+                if (i % 2 == 1) {
+                    helper += 16 * (color.charAt(i) - 55);
+                } else {
+                    helper += color.charAt(i) - 55;
+                }
+            }
+            if (i % 2 == 0) {
+                tab[tabCounter] = helper;
+                helper = 0;
+                tabCounter++;
+            }
+        }
+        return tab;
+    }
+
+    public void zadanie43() {
+        for (int x : HTMLColor2RGB("#FF0050")) {
+            System.out.print(x + ",");
+        }
+        System.out.println();
+        for (int x : HTMLColor2RGB("#001020")) {
+            System.out.print(x + ",");
+        }
+    }
 }
 

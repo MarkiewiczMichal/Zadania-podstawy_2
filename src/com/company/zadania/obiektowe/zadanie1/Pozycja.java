@@ -14,7 +14,7 @@ public class Pozycja {
     //Cukier 4,00 zł 3 szt. 12,00 zł
 
     private final String nazwaTowaru;
-    private final int ileSztuk;
+    private int ileSztuk;
     private final double cena;
 
     Pozycja(String nazwaTowaru, int ileSztuk, double cena) {
@@ -25,6 +25,18 @@ public class Pozycja {
 
     public double obliczWartosc() {
         return cena * ileSztuk;
+    }
+
+    public String getNazwaTowaru() {
+        return nazwaTowaru;
+    }
+
+    public void setIleSztuk(int ileSztuk) {
+        this.ileSztuk += ileSztuk;
+    }
+
+    public int getIleSztuk(){
+        return ileSztuk;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.company.zadania.obiektowe.zadanie1;
 
+import java.util.Scanner;
+
 public class Zamowienie {
 
     public Zamowienie() {
@@ -16,28 +18,64 @@ public class Zamowienie {
     private int ileDodanych = 0;
 
     public void dodajPozycje(Pozycja p) {
+        for (Pozycja value : pozycja) {
+            if (value == null) continue;
+            if (p.getNazwaTowaru().equals(value.getNazwaTowaru())) {
+                value.setIleSztuk(p.getIleSztuk());
+                return;
+            }
+        }
         pozycja[ileDodanych] = p;
         ileDodanych++;
     }
 
     public double obliczWartosc() {
         double wartoscZamowienia = 0;
-        for (int i = 0; i < pozycja.length; i++) {
-            if(pozycja[i]==null) break;
-            wartoscZamowienia += pozycja[i].obliczWartosc();
+        for (Pozycja value : pozycja) {
+            if (value == null) continue;
+            wartoscZamowienia += value.obliczWartosc();
         }
         return wartoscZamowienia;
     }
+
+    public void usunPozycje(int indeks) {
+        try {
+            pozycja[indeks] = null;
+        } catch (ArrayIndexOutOfBoundsException e) {
+        }
+    }
+
+    public void edytujPozycje(int indeks) {
+        Scanner scanner = new Scanner((System.in));
+        String nazwaTowaru;
+        int ileSztuk;
+        double cena;
+        try {
+            if (pozycja[indeks] != null) {
+                System.out.println("Podaj nową nazwę towaru");
+                nazwaTowaru = scanner.next();
+                System.out.println("Podaj ilość sztuk");
+                ileSztuk = scanner.nextInt();
+                System.out.println("Podaj nową cenę");
+                cena = scanner.nextDouble();
+                pozycja[indeks] = new Pozycja(nazwaTowaru, ileSztuk, cena);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("Taki index nie występuje w tablicy");
+        }
+
+    }
+
 
     @Override
     public String toString() {
         StringBuilder helper = new StringBuilder();
         for (Pozycja value : pozycja) {
-            if (value == null) break;
+            if (value == null) continue;
             helper.append(value);
             helper.append("\n");
         }
         System.out.println();
-        return "Zamówienie" + "\n" + helper + "Razem: " + obliczWartosc();
+        return "Zamówienie: " + "\n" + helper + "Razem: " + obliczWartosc();
     }
 }

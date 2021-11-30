@@ -32,10 +32,14 @@ public class Pozycja {
     }
 
     public void setIleSztuk(int ileSztuk) {
+        this.ileSztuk = ileSztuk;
+    }
+
+    public void addIleSztuk(int ileSztuk) {
         this.ileSztuk += ileSztuk;
     }
 
-    public int getIleSztuk(){
+    public int getIleSztuk() {
         return ileSztuk;
     }
 

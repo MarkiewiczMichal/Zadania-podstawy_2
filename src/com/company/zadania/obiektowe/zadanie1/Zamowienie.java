@@ -1,6 +1,7 @@
 package com.company.zadania.obiektowe.zadanie1;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Zamowienie {
 
@@ -20,8 +21,8 @@ public class Zamowienie {
     public void dodajPozycje(Pozycja p) {
         for (Pozycja value : pozycja) {
             if (value == null) continue;
-            if (p.getNazwaTowaru().equals(value.getNazwaTowaru())) {
-                value.setIleSztuk(p.getIleSztuk());
+            if (value.getNazwaTowaru().equals(p.getNazwaTowaru())) {
+                value.addIleSztuk(p.getIleSztuk());
                 return;
             }
         }
@@ -38,10 +39,12 @@ public class Zamowienie {
         return wartoscZamowienia;
     }
 
-    public void usunPozycje(int indeks) {
+    public boolean usunPozycje(int indeks) {
         try {
             pozycja[indeks] = null;
+            return true;
         } catch (ArrayIndexOutOfBoundsException e) {
+            return false;
         }
     }
 
@@ -63,9 +66,7 @@ public class Zamowienie {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.err.println("Taki index nie występuje w tablicy");
         }
-
     }
-
 
     @Override
     public String toString() {

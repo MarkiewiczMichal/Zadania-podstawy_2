@@ -1336,24 +1336,28 @@ public class Zadania {
     //Write a program, which will find all such numbers between 1000 and 3000 (both included)
     // such that each digit of the number is an even number.
     //The numbers obtained should be printed in a comma-separated sequence on a single line.
-
-    public void zadanie44() {
+    private boolean isEveryDigitEven(int number) {
         int helper;
         int digit;
-        int counter = 0;
-        for (int i = 1000; i < 3001; i++) {
-            helper = i;
-            for (int j = 0; j < 4; j++) {
-                digit = helper % 10;
-                if (digit % 2 == 0) {
-                    counter++;
-                }
-                helper = helper / 10;
+        int counter;
+        helper = number;
+        counter = 0;
+        for (int j = 0; j < String.valueOf(number).length(); ++j) {
+            digit = helper % 10;
+            if (digit % 2 == 0) {
+                counter++;
+            } else break;
+            helper /= 10;
+        }
+        return counter == String.valueOf(number).length();
+    }
+
+    public void zadanie44() {
+        long ileminelo = System.currentTimeMillis();
+        for (int i = 1000; i <= 3000; ++i) {
+            if (isEveryDigitEven(i)) {
+                System.out.print(i + ",");
             }
-            if (counter == 4) {
-                System.out.print(i + " ,");
-                counter = 0;
-            } else counter = 0;
         }
     }
 }

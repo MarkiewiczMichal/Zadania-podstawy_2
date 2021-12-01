@@ -32,11 +32,18 @@ public class Zamowienie {
 
     public double obliczWartosc() {
         double wartoscZamowienia = 0;
+        double wartoscZamowieniaPorabacie = 0;
+        double rabat;
         for (Pozycja value : pozycja) {
             if (value == null) continue;
             wartoscZamowienia += value.obliczWartosc();
+            wartoscZamowieniaPorabacie += value.obliczWartoscZRabatem();
         }
-        return wartoscZamowienia;
+        rabat = wartoscZamowienia - wartoscZamowieniaPorabacie;
+        if (rabat > 0) {
+            System.out.println("Wartość rabatu to :" + Math.round(rabat * 100.0) / 100.0 + " zł");
+        }
+        return wartoscZamowieniaPorabacie;
     }
 
     public boolean usunPozycje(int indeks) {

@@ -43,6 +43,17 @@ public class Pozycja {
         return ileSztuk;
     }
 
+    public double obliczWartoscZRabatem() {
+        if (ileSztuk >= 5 && ileSztuk < 10) {
+            return obliczWartosc() * 0.95;
+        } else if (ileSztuk >= 10 && ileSztuk < 20) {
+            return obliczWartosc() * 0.9;
+        } else if (ileSztuk >= 20) {
+            return obliczWartosc() * 0.85;
+        }
+        return obliczWartosc();
+    }
+
     @Override
     public String toString() {
         return nazwaTowaru + " " + cena + " zł " + ileSztuk + " szt. " + obliczWartosc() + " zł";
